@@ -1,5 +1,6 @@
 const JWT = require('jsonwebtoken');
 const User = require('../models/user.model');
+const Theme = require('../models/theme.model');
 const {JWT_SECRET} = require('../configuration');
 
 signToken = user => {
@@ -29,9 +30,15 @@ module.exports = {
     response.status(200).json({token});
   },
   signIn: async (request, response, next) => {
-    console.log('UserController.signin() called!');
     const token = signToken(request.user);
-    response.status(200).json({token});
+    console.log('user: ' + request.user);
+    let theme = await Theme.findOne({'user_id': request.user._id});
+    if (!theme) {
+      theme = "dark.purple";
+    } else {
+      theme = theme.theme;
+    }
+    response.status(200).json({"token": token, "theme": theme, "user_id": request.user._id});
   },
   secret: async (request, response, next) => {
     console.log('UserController.secret() called!');

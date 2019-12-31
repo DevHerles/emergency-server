@@ -52,11 +52,13 @@ const exercisesRouter = require('./routes/exercises');
 const usersRouter = require('./routes/users');
 const emergencyRouter = require('./routes/emergency.route');
 const sequenceRouter = require('./routes/sequence.route');
+const themeRouter = require('./routes/theme.route');
 
 app.use('/exercises', exercisesRouter);
 app.use('/users', usersRouter);
 app.use('/emergencies', emergencyRouter);
 app.use('/sequences', sequenceRouter);
+app.use('/themes', themeRouter);
 
 module.exports = app;
 

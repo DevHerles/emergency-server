@@ -24,6 +24,10 @@ module.exports = {
       address: Joi.string().required(),
       reference: Joi.string(),
       date_time: Joi.string()
+    }),
+    themeSchema: Joi.object().keys({
+      user_id: Joi.string().required(),
+      theme: Joi.string().required()
     })
   }
 }
