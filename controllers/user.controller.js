@@ -31,7 +31,6 @@ module.exports = {
   },
   signIn: async (request, response, next) => {
     const token = signToken(request.user);
-    console.log('user: ' + request.user);
     let theme = await Theme.findOne({'user_id': request.user._id});
     if (!theme) {
       theme = "dark.purple";

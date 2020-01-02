@@ -13,5 +13,7 @@ router.route('/add')
   .post(validateBody(schemas.emergencySchema),  Emergency.add);
 router.route('/:id')
   .get(passportJWT, Emergency.findById);
+router.route('/:id')
+  .delete(passportJWT, Emergency.delete);
 
 module.exports = router;
