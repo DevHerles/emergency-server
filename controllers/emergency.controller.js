@@ -59,7 +59,7 @@ module.exports = {
     const sequence = await Sequence.findOne({"code": "emergency"});
     
     if (!sequence) {
-      return res.status(400).send({
+      return response.status(400).send({
         message: "Emergency sequence does not exists."
       });
     }
